@@ -29,4 +29,4 @@ jobs:
          tags: omwadhi64/user-merchant-app 
 
       - name: Verify and Push
-        uses: docker pull omwadhi64/user-merchant-app
+        run: docker pull omwadhi64/user-merchant-app # this needs to be run since we are running a cli command. If it was a path that need to be mentioned then we had to use "uses" instead of "run"
