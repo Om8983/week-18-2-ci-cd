@@ -2,14 +2,14 @@ FROM node:20-alpine3.19
 
 WORKDIR /usr/src/app
 
-COPY package.json package-lock.json tsconfig.json turbo.json /usr/src/app/
+COPY package.json package-lock.json tsconfig.json turbo.json ./
 
 # we are first copying this over to /app becuase this is a monorepo and each of the folder has its own package.json
-COPY ./apps /usr/src/app/  
-COPY ./packages /usr/src/app/
+COPY ./apps ./apps  
+COPY ./packages ./packages
 
 RUN npm install
 # RUN cd packages/db && npx prisma generate && cd ../..  (ideally i should've done this but since i already added a script which does this so no need to do that)
-RUN npm run cd packages/db && npx prisma generate && cd ../.. 
+RUN npm run db:generate 
 RUN npm run build
 CMD [ "npm", "run", "start-user-app" ]
