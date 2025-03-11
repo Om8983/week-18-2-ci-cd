@@ -24,7 +24,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
          context: .
-         file: ./Dockerfile
+         file: ./docker/Dockerfile.user
          push: true
          tags: omwadhi64/user-merchant-app 
 
